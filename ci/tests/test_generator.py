@@ -1,6 +1,7 @@
-from ci.tests import is_base36
 from cuid2.generator import (generate_entropy, generate_fingerprint,
                              generate_hash)
+
+from tests import is_base36
 
 
 def test_generate_entropy() -> None:

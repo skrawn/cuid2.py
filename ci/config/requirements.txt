@@ -9,4 +9,3 @@ safety==2.3.5
 setuptools
 twine==4.0.2
 wheel==0.38.1
-pytest-asyncio==0.20.3
