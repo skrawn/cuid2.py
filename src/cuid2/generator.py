@@ -27,7 +27,7 @@ def generate_hash(data: str = '', length: int = 32) -> str:
     hash_result: str = sha3_512.hexdigest()
 
     hash_result = hash_result.lstrip('0x')
-    hash_result = hash_result.rsplit('L')[0]
+    hash_result = hash_result.split('L', maxsplit=1)[0]
 
     result: int = string_to_int(hash_result)
 
@@ -44,7 +44,7 @@ def generate_fingerprint() -> str:
     raw_hostname: str = socket.gethostname()
     entropy: int = int(generator.random() + 1) * 2063
 
-    hostname: int = sum([ord(c) for c in str(raw_hostname)])
+    hostname: int = sum(ord(c) for c in str(raw_hostname))
     hostname_hash: str = base36_encode(hostname + len(raw_hostname) + 36)
 
     hostname_hash = pad_string(hostname_hash, 2)

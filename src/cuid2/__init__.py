@@ -16,7 +16,7 @@ def cuid(length: int = 24) -> str:
     counter: str = base36_encode(int(generator.random() * 2057) + 1)
     letter: str = random_letter()
 
-    time: str = datetime.now().strftime("%m%d%Y%H%M%S")
+    time: str = datetime.now().strftime('%m%d%Y%H%M%S')
     time = base36_encode(string_to_int(time))
 
     return letter + generate_hash(time + entropy + counter + fingerprint, length)[1:length]

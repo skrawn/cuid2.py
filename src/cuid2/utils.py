@@ -3,8 +3,8 @@ import string
 from random import SystemRandom
 
 
-def string_to_int(string: str) -> int:
-    raw_string: bytes = string.encode()
+def string_to_int(text: str) -> int:
+    raw_string: bytes = text.encode()
     raw_string = binascii.hexlify(raw_string)
 
     return int(raw_string, 16)
@@ -31,13 +31,13 @@ def random_letter() -> str:
     return alphabet[int(generator.random() * len(alphabet))]
 
 
-def pad_string(string: str, i: int) -> str:
-    padding: str = "000000000"
+def pad_string(text: str, i: int) -> str:
+    padding: str = '000000000'
 
-    if len(string) == i:
-        return string
+    if len(text) == i:
+        return text
 
-    if len(string) < i:
-        return padding[0:i-len(string)] + string
+    if len(text) < i:
+        return padding[0:i - len(text)] + text
 
-    return string[-i:]
+    return text[-i:]
