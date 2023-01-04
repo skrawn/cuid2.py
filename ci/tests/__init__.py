@@ -1,4 +1,3 @@
-import logging
 import string
 from functools import reduce
 from math import ceil, floor
@@ -31,10 +30,10 @@ async def create_id_pool(max: int = 100000) -> tuple[list[int], list[int], list[
 
     for i in range(0, max):
         id_pool_set.add(cuid())
-        logging.info(f'ID Pool Generation {floor((i/max) * 100)}% done')
+        print(f'ID Pool Generation {floor((i/max) * 100)}% done')  # noqa
 
         if len(id_pool_set) < i:
-            logging.info(f'Collision detected at {i}')
+            print(f'Collision detected at {i}')  # noqa
             break
 
     id_pool: list[int] = list(id_pool_set)
