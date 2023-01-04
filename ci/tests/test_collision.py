@@ -12,7 +12,7 @@ async def worker(max) -> tuple[list[int], list[int], list[int]]:
 
 @pytest.mark.asyncio
 async def test_collision() -> None:
-    magic: int = 500000
+    magic: int = 750000
     workers: int = min(32, os.cpu_count() or 1 + 4)
     id_pools: list[tuple[list[int], list[int], list[int]]] = []
 
