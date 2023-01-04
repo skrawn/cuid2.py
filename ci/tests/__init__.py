@@ -28,7 +28,7 @@ def build_histogram(numbers: list[int], bucket_count: int = 20) -> list[int]:
 async def create_id_pool(max: int = 100000) -> tuple[list[int], list[int], list[int]]:
     id_pool_set: set[int] = set()
 
-    percent: int = 0
+    percent: int = -1
 
     for i in range(0, max):
         id_pool_set.add(cuid())

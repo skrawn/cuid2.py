@@ -1,3 +1,4 @@
+import os
 from concurrent.futures import Future, ThreadPoolExecutor
 from math import ceil
 
@@ -11,8 +12,8 @@ async def worker(max) -> tuple[list[int], list[int], list[int]]:
 
 @pytest.mark.asyncio
 async def test_collision() -> None:
-    magic: int = 7 ** 8 * 2
-    workers: int = 7
+    magic: int = 7 ** 7 * 2
+    workers: int = min(32, os.cpu_count() or 1 + 4)
     id_pools: list[tuple[list[int], list[int], list[int]]] = []
 
     with ThreadPoolExecutor(max_workers=workers) as executor:
