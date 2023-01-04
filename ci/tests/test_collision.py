@@ -15,7 +15,7 @@ async def test_collision() -> None:
     id_pools: list[tuple[list[int], list[int], list[int]]] = []
 
     with ThreadPoolExecutor(max_workers=workers) as executor:
-        future: Future = executor.submit(worker, magic / workers)
+        future: Future = executor.submit(worker, int(magic / workers))
         result: tuple[list[int], list[int], list[int]] = await future.result()
         id_pools.append(result)
 
