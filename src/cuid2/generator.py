@@ -26,7 +26,7 @@ def generate_hash(data: str = '', length: int = 32) -> str:
 
     hash_result: str = sha3_512.hexdigest()
 
-    hash_result = hash_result.lstrip('0x')[0]
+    hash_result = hash_result.lstrip('0x')
     hash_result = hash_result.rsplit('L')[0]
 
     result: int = string_to_int(hash_result)
