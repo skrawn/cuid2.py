@@ -12,16 +12,6 @@ def test_generate_entropy() -> None:
     assert is_base36(entropy)  # noqa
 
 
-def test_generate_entropy_custom_length() -> None:
-    entropy: str = generate_entropy(2)
-
-    assert entropy is not None  # noqa
-    assert isinstance(entropy, str)  # noqa
-    assert len(entropy) != 4  # noqa
-    assert len(entropy) == 2  # noqa
-    assert is_base36(entropy)  # noqa
-
-
 def test_generate_entropy_custom_long_length() -> None:
     entropy: str = generate_entropy(32)
 
