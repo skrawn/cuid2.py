@@ -3,11 +3,10 @@ from functools import reduce
 from math import ceil, floor
 
 from cuid2 import cuid
-from cuid2.utils import string_to_int
 
 
 def id_to_b36(id: int) -> int:
-    return reduce(lambda r, v: r * 36 + int(v, 36), [*str(id)])
+    return reduce(lambda r, v: r * 36 + int(v, 36), [*str(id)[1:]])
 
 
 def is_base36(text: str) -> bool:
@@ -43,7 +42,7 @@ async def create_id_pool(max: int = 100000) -> tuple[list[int], list[int], list[
             break
 
     id_pool: list[int] = list(id_pool_set)
-    numbers: list[int] = list(map(lambda id: id_to_b36(string_to_int(id)[1:]), id_pool))
+    numbers: list[int] = list(map(lambda id: id_to_b36(id), id_pool))
     histogram: list[int] = build_histogram(numbers)
 
     return (id_pool, numbers, histogram)
