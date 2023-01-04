@@ -21,19 +21,12 @@ classifiers = [
     "Programming Language :: Python :: 3.9"
 ]
 keywords = ['crypt', 'security', 'uuid', 'guid', 'cuid', 'cryptography']
-dependencies = [
-]
 
 [project.urls]
 repository = "https://github.com/overflowdigital/cuid2py/"
 
-
 [tools.setuptools]
 platforms = ["any"]
-
-[tools.setuptools.packages.find]
-where = ['src']
-include = ['cuid2py*']
 
 [tool.setuptools.dynamic]
 version = { attr = "cuid2py.__version__" }
