@@ -23,10 +23,14 @@ classifiers = [
 keywords = ['crypt', 'security', 'uuid', 'guid', 'cuid', 'cryptography']
 
 [project.urls]
-repository = "https://github.com/overflowdigital/cuid2py/"
+repository = "https://github.com/overflowdigital/cuid2.py/"
 
 [tools.setuptools]
 platforms = ["any"]
 
+[tools.setuptools.packages.find]
+where = ['src']
+include = ['cuid2*']
+
 [tool.setuptools.dynamic]
-version = { attr = "cuid2py.__version__" }
+version = { attr = "cuid2.__version__" }
