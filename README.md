@@ -1,47 +1,43 @@
-# Flask-OpenAPI3-UI
+# cuid2.py
 
 [![Python](https://img.shields.io/badge/python-3.6.1-blue.svg)](https://img.shields.io/badge/python-3.6.1-blue.svg)
-[![PyPi](https://img.shields.io/pypi/v/Flask-OpenAPI3-UI.svg)](https://pypi.python.org/pypi/Flask-OpenAPI3-UI)
-[![PyPi](https://img.shields.io/pypi/dm/Flask-OpenAPI3-UI.svg)](https://pypi.python.org/pypi/Flask-OpenAPI3-UI)
-[![Flask-OpenAPI3-UI](https://snyk.io/advisor/python/Flask-OpenAPI3-UI/badge.svg)](https://snyk.io/advisor/python/Flask-OpenAPI3-UI)
+[![PyPi](https://img.shields.io/pypi/v/cuid2.svg)](https://pypi.python.org/pypi/cuid2)
+[![PyPi](https://img.shields.io/pypi/dm/cuid2.svg)](https://pypi.python.org/pypi/cuid2)
+[![cuid2](https://snyk.io/advisor/python/cuid2/badge.svg)](https://snyk.io/advisor/python/cuid2)
 
-Next generation OpenAPI v3 Integration for Flask based APIs. Based on Flasgger.
+CUID2 for Python 3. Next generation GUIDs. Collision-resistant ids optimized for horizontal scaling and performance.
+
+A port of the [CUID2 reference implementation](https://github.com/paralleldrive/cuid2) by [Parallel Drive](https://github.com/paralleldrive) to Python 3.
+
+
+## What is CUID2?
+
+* Secure: It's not possible to guess the next ID.
+* Collision resistant: It's extremely unlikely to generate the same ID twice.
+* Horizontally scalable: Generate IDs on multiple machines without coordination.
+* Offline-compatible: Generate IDs without a network connection.
+* URL and name-friendly: No special characters.
+
+## Why?
+
+For more information on the theory and usage of CUID2, see the [following](https://github.com/paralleldrive/cuid2#why).
+
+## Improvements Over CUID
+
+For more information on the improvements of CUID2 over CUID, see the [following](https://github.com/paralleldrive/cuid2#improvements-over-cuid).
+
 
 ## Install
 ```
-pip install Flask-OpenAPI3-UI
+pip install cuid2
 ```
 
 ## Usage
-You can start your Swagger spec with any default data providing a template:
+You can generate CUIDs with the following:
 ```python
-from flask_openapi import Swagger
+from cuid2 import cuid
 
 def main():
-  app = create_app()
-  app.config['SWAGGER'] = {
-      "uiversion": 3,
-      "openapi": "3.0.3",
-      "info": {
-          "title": "API documentation",
-          "description": "API docs for ",
-          "version": 1.0.0
-      },
-      "swagger_ui": True,
-      "basePath": "/api",  # base bash for blueprint registration
-      "components": {
-          "securitySchemes": {
-              "bearerAuth": {
-                  "type": "http",
-                  "scheme": "bearer",
-                  "bearerFormat": "JWT"
-              }
-          }
-      },
-      "title": "API docs",
-      "optional_fields": ["components", "tags", "paths"],
-      "doc_dir": "/home/admin/flaskapp/src/api/",
-  }
-  Swagger(app=app)
+  my_cuid: str = cuid()
 ```
-And then the template is the default data unless some view changes it. You can also provide all your specs as template and have no views. Or views in external APP.
+
