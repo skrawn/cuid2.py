@@ -8,6 +8,7 @@ from ci.tests import create_id_pool
 async def worker(max) -> tuple[list[int], list[int], list[int]]:
     return await create_id_pool(max)
 
+
 @pytest.mark.asyncio
 async def test_collision() -> None:
     magic: int = 7 ** 8 * 2

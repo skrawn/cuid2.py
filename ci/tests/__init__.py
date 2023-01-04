@@ -28,9 +28,14 @@ def build_histogram(numbers: list[int], bucket_count: int = 20) -> list[int]:
 async def create_id_pool(max: int = 100000) -> tuple[list[int], list[int], list[int]]:
     id_pool_set: set[int] = set()
 
+    percent: int = 0
+
     for i in range(0, max):
         id_pool_set.add(cuid())
-        print(f'ID Pool Generation {floor((i/max) * 100)}% done')  # noqa
+
+        if floor((i/max) * 100) != percent:
+            percent = floor((i/max) * 100)
+            print(f'ID Pool Generation {percent}% done')  # noqa
 
         if len(id_pool_set) < i:
             print(f'Collision detected at {i}')  # noqa
